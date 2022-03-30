@@ -26,29 +26,30 @@ class MainNav extends Component {
                   Home
                 </Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/Airlines" className="nav-link">
-                  Airlines
-                </Link>
-              </Nav.Link>
-              {/* <NavDropdown title="Airlines" id="navbarScrollingDropdown">
-          <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action5">
-            Something else here
-          </NavDropdown.Item>
-        </NavDropdown> */}
+
               <Nav.Link>
                 <Link to="/Reviews" className="nav-link">
                   Reviews
                 </Link>
               </Nav.Link>
-
-              <Nav.Link disabled>
-                <Link to="/" className="nav-link">
-                  Admin Page
+              <Nav.Link>
+                <Link to="/AddReview" className="nav-link">
+                  Add Review
                 </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <NavDropdown title="noadmin" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="#action3">
+                    Add Airline
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action4">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5">
+                    Something else here
+                  </NavDropdown.Item>
+                </NavDropdown>
               </Nav.Link>
             </Nav>
             {/* <Form className="d-flex">
