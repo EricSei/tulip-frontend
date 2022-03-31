@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
-import { Container, Form, FormControl, Button } from "react-bootstrap";
-import { render } from "react-dom";
+import { Navbar, Nav,  NavDropdown } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class MainNav extends Component {
@@ -39,8 +38,10 @@ class MainNav extends Component {
               </Nav.Link>
               <Nav.Link>
                 <NavDropdown title="noadmin" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">
-                    Add Airline
+                  <NavDropdown.Item>
+                    <Link to="/AddAirline" className="nav-link">
+                      Add Airline
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action4">
                     Another action

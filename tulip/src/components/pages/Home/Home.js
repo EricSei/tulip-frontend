@@ -2,6 +2,7 @@
 //import { education } from '../../portfolio'
 //import './Education.css'
 import React, { useState, useEffect } from "react";
+import { Card, Placeholder, Holder, Button } from "react-bootstrap";
 
 function Home() {
   const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ function Home() {
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("http://44.201.191.160:8080/api/health")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -35,13 +36,32 @@ function Home() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul>
+      <div className="App">
+        <h1> Fetch data from an api in react </h1>{" "}
         {items.map((item) => (
-          <li key={item.id}>
-            {item.name} {item.price}
-          </li>
+          <div className="d-flex justify-content-around">
+            <Card style={{ width: "18rem" }}>
+              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+              <Card.Body>
+                <Card.Title>very impressed</Card.Title>
+                <Card.Text>5 Stars</Card.Text>
+                <Card.Text>
+                  Just had a great flight here for the first time and was very
+                  impressed. I had Doris as a pilit she was fantastic. She took
+                  her time and made sure every detail was perfect. Highly
+                  recommend her!
+                </Card.Text>
+                <Button variant="primary">Edit</Button>
+              </Card.Body>
+            </Card>
+          </div>
+          // <ol>
+          //     User_Name: { item.username },
+          //     Full_Name: { item.name },
+          //     User_Email: { item.email }
+          // </ol>
         ))}
-      </ul>
+      </div>
     );
   }
 }

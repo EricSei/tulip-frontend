@@ -60,9 +60,6 @@ function AddReview() {
         <Form.Label>Review Text</Form.Label>
         <Form.Control as="textarea" rows={3} />
       </Form.Group>
-      <button type="submit" className="btn btn-primary">
-                Submit
-      </button>
     </Form>
   );
 }
