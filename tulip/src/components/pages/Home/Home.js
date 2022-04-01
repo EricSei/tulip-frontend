@@ -3,6 +3,7 @@
 //import './Education.css'
 import React, { useState, useEffect } from "react";
 import { Card, Placeholder, Holder, Button } from "react-bootstrap";
+import AirlineApi from "../../../apis/AirlineApis";
 
 function Home() {
   const [error, setError] = useState(null);
@@ -13,22 +14,8 @@ function Home() {
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
-  }, []);
+    AirlineApi.getMyReviews()
+   }, []);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -37,6 +24,7 @@ function Home() {
   } else {
     return (
       <div className="App">
+        
         <h1> Fetch data from an api in react </h1>{" "}
         {items.map((item) => (
           <div className="d-flex justify-content-around">

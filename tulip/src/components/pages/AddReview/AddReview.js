@@ -1,6 +1,36 @@
 import { Form } from "react-bootstrap";
+import AirlineApi from "../../../apis/AirlineApis";
 
-function AddReview() {
+
+
+const AddReview = (props) => {
+  //const [name, setName] = useState("");
+  //const [id, setid] = useState(-1)
+  // const [qty, setQty] = useState(0)
+
+  const handleSubmit = (event) => {
+    //console.log("Name = " + name);
+    //console.log("id = " + id)
+    // console.log("Qty = " + qty)
+
+    const review = {
+      "sourcePort": "JFK",
+      "destPort" : "Atlanta",
+      "rating": 6,
+      "flightClass": "Business",
+      "reviewText": "Average"
+    };
+    
+
+    AirlineApi.createReview(review);
+
+    // reset form
+    //setName("");
+    // setPrice(0)
+    // setQty(0)
+
+    event.preventDefault();
+  };
   return (
     <Form className="justify-content-around">
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -60,6 +90,7 @@ function AddReview() {
         <Form.Label>Review Text</Form.Label>
         <Form.Control as="textarea" rows={3} />
       </Form.Group>
+      <input type="submit" className="btn btn-primary" />
     </Form>
   );
 }
