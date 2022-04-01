@@ -32,7 +32,14 @@ const AirlineApi = {
       })
       .catch((error) => console.log(error)); // catch -> called when an error occurs
   },
-
+  isLogedin: () => {
+    jwt = "";
+    if (jwt === "") {
+      return false;
+    } else {
+      return true;
+    }
+  },
   // POST request to create a product
   createAirline: (airline) => {
     // to perform request, need the product object

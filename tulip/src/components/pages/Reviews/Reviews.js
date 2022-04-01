@@ -1,56 +1,76 @@
+import React, { useState, useEffect } from "react";
 import { Card, Placeholder, Holder, Button } from "react-bootstrap";
 //import TAair from "./components/pages/Reviews/Reviews";
 import myImage from "./TAAir.jpg";
 
 function Reviews() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetch("http://localhost:8080/api/review")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
   return (
-    <div className="d-flex justify-content-around">
-      <Card>
+    <div>
+       <h1> List of airlines we review </h1>{" "}
+       <div className="d-flex justify-content-around">
+      <Card >
         <Card.Img
           className="img-thumbnail"
           variant="top"
           src={myImage}
           alt="image"
-          style={{ width: "10rem" }}
+          style={{ width: "18rem" }}
         />
         <Card.Body>
           <Card.Title>Trans American Airlines</Card.Title>
         </Card.Body>
 
+        {items.map((item) => (
         <div className="d-flex justify-content-around">
           <Card style={{ width: "18rem" }}>
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
               <Card.Title>very impressed</Card.Title>
-              <Card.Text>5 Stars</Card.Text>
+              <Card.Text>{ item.rating } : Stars</Card.Text>
               <Card.Text>
-                Just had a great flight here for the first time and was very
-                impressed. I had Doris as a pilit she was fantastic. She took
-                her time and made sure every detail was perfect. Highly
-                recommend her!
+              { item.reviewText }
               </Card.Text>
-              <Button variant="primary">Edit</Button>
+              <Card.Text>flightClass: { item.flightClass }</Card.Text>
+              <Card.Text>sourcePort: { item.sourcePort }</Card.Text>
+              <Card.Text>destPort: { item.destPort }</Card.Text>
             </Card.Body>
           </Card>
-
-          <Card style={{ width: "18rem" }}>
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Body>
-              <Placeholder as={Card.Title} animation="glow">
-                <Placeholder xs={6} />
-              </Placeholder>
-              <Placeholder as={Card.Text} animation="glow">
-                <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
-                <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
-                <Placeholder xs={8} />
-              </Placeholder>
-              <Placeholder.Button variant="primary" xs={6} />
-            </Card.Body>
-          </Card>
+          </div>
+          ))}
+        </Card>
         </div>
-      </Card>
     </div>
   );
+  }
 }
 
 export default Reviews;

@@ -2,9 +2,29 @@ import React, { Component } from "react";
 import { Navbar, Nav,  NavDropdown } from "react-bootstrap";
 import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AirlineApi from "../apis/AirlineApis";
+//import jwt from "../apis/AirlineApis";
 
-class MainNav extends Component {
-  render() {
+// var logedin;
+// if (jwt === "") {
+//   logedin = false;
+// } else {
+//   logedin = true;
+// }
+var logedin = true;
+
+function MainNav() {
+
+  const handleSubmit = () => {
+    console.log("jwt");
+
+    logedin = AirlineApi.isLogedin();
+    
+    console.log(logedin);
+  
+    logedin = false;
+  };
+
     return (
       <Navbar bg="light" expand="lg">
         <Container fluid>
@@ -21,8 +41,8 @@ class MainNav extends Component {
               navbarScroll
             >
               <Nav.Link>
-                <Link to="/" className="nav-link">
-                  Home
+                <Link to="/Airlines" className="nav-link">
+                  Airlines
                 </Link>
               </Nav.Link>
 
@@ -32,10 +52,21 @@ class MainNav extends Component {
                 </Link>
               </Nav.Link>
               <Nav.Link>
+                <Link to="/" className="nav-link">
+                  My Reviews
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
                 <Link to="/AddReview" className="nav-link">
                   Add Review
                 </Link>
               </Nav.Link>
+              <Nav.Link>
+                <Link to="/AddAirline" className="nav-link">
+                  Add Airline
+                </Link>
+              </Nav.Link>
+
               <Nav.Link>
                 <NavDropdown title="noadmin" id="navbarScrollingDropdown">
                   <NavDropdown.Item>
@@ -62,17 +93,28 @@ class MainNav extends Component {
         />
         <Button variant="outline-success">Search</Button>
       </Form> */}
-            <Nav.Link>
+      {logedin &&
+            (<Nav.Link>
               <Button variant="outline-success">
                 <Link to="/Login" className="nav-link">
                   Login
                 </Link>
               </Button>
-            </Nav.Link>
-            <Nav.Link>
+            </Nav.Link>)
+}
+{logedin &&
+            (<Nav.Link>
               <Button variant="outline-success">
                 <Link to="/Register" className="nav-link">
                   Register
+                </Link>
+              </Button>
+            </Nav.Link>)
+}
+  <Nav.Link>
+              <Button variant="outline-success" onClick={handleSubmit}>
+                <Link to="/" className="nav-link">
+                  Logout 
                 </Link>
               </Button>
             </Nav.Link>
@@ -80,7 +122,6 @@ class MainNav extends Component {
         </Container>
       </Navbar>
     );
-  }
 }
 
 export default MainNav;

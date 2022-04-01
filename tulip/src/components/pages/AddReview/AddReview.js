@@ -9,16 +9,16 @@ const AddReview = (props) => {
   // const [qty, setQty] = useState(0)
 
   const handleSubmit = (event) => {
-    //console.log("Name = " + name);
+    console.log("Name = ");
     //console.log("id = " + id)
     // console.log("Qty = " + qty)
 
     const review = {
-      "sourcePort": "JFK",
-      "destPort" : "Atlanta",
-      "rating": 6,
+      "sourcePort": "NewWark",
+      "destPort" : "Orlando",
+      "rating": 8,
       "flightClass": "Business",
-      "reviewText": "Average"
+      "reviewText": "Just had a great flight here for the first time and was very impressed. I had Doris as a pilit she was fantastic. She took her time and made sure every detail was perfect. Highly recommend her!"
     };
     
 
@@ -32,7 +32,7 @@ const AddReview = (props) => {
     event.preventDefault();
   };
   return (
-    <Form className="justify-content-around">
+    <Form className="justify-content-around" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>AirLine</Form.Label>
         <Form.Select aria-label="Default select example">
