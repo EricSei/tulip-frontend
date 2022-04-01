@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import { Navbar, Nav,  NavDropdown } from "react-bootstrap";
 import { Container, Button } from "react-bootstrap";
@@ -24,7 +25,6 @@ function MainNav() {
   
     logedin = false;
   };
-
     return (
       <Navbar bg="light" expand="lg">
         <Container fluid>

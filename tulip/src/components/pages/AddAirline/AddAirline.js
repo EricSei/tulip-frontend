@@ -6,12 +6,12 @@ import AirlineApi from "../../../apis/AirlineApis";
 
 const AddAirline = (props) => {
   const [name, setName] = useState("");
-  const [id, setid] = useState(-1)
+  //const [id, setid] = useState(-1)
   // const [qty, setQty] = useState(0)
 
   const handleSubmit = (event) => {
     console.log("Name = " + name);
-    console.log("id = " + id)
+    //console.log("id = " + id)
     // console.log("Qty = " + qty)
 
     const airline = {
@@ -45,15 +45,6 @@ const AddAirline = (props) => {
         <Form.Text className="text-muted">
           This is the airline you are adding
         </Form.Text>
-        <Form.Control
-          placeholder="Enter id as -1"
-          id="id"
-          name="id"
-          value={-1}
-          onChange={(event) => {
-            setid(event.target.value);
-          }}
-        />
       </Form.Group>
       <input type="submit" className="btn btn-primary" />
     </Form>
