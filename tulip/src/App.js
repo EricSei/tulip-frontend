@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import Airlines from "./components/pages/Airlines/Airlines";
 import Reviews from "./components/pages/Reviews/Reviews";
+import MyReviews from "./components/pages/MyReviews/MyReviews";
 import AddReview from "./components/pages/AddReview/AddReview";
 import AddAirline from "./components/pages/AddAirline/AddAirline";
 import Login from "./components/pages/Login/Login";
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/Airlines" element={<Airlines />} />
       <Route path="/Reviews" element={<Reviews />} />
+      <Route path="/MyReviews" element={<MyReviews />} />
       <Route path="/AddReview" element={<AddReview />} />
       <Route path="/AddAirline" element={<AddAirline />} />
       <Route path="/Login" element={<Login />} />

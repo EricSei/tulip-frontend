@@ -1,21 +1,23 @@
 import { Form } from "react-bootstrap";
+import React, { useState } from "react";
 import AirlineApi from "../../../apis/AirlineApis";
 
 
 
 const AddReview = (props) => {
-  //const [name, setName] = useState("");
-  //const [id, setid] = useState(-1)
+  const [sourcePort, setsourcePort] = useState("");
+  const [destPort, setdestPort] = useState("");
+  //const [rating, setRating] = useState(1)
   // const [qty, setQty] = useState(0)
 
   const handleSubmit = (event) => {
-    console.log("Name = ");
+    console.log("Name = " + sourcePort);
     //console.log("id = " + id)
     // console.log("Qty = " + qty)
 
     const review = {
-      "sourcePort": "NewWark",
-      "destPort" : "Orlando",
+      "sourcePort": sourcePort,
+      "destPort" : destPort,
       "rating": 8,
       "flightClass": "Business",
       "reviewText": "Just had a great flight here for the first time and was very impressed. I had Doris as a pilit she was fantastic. She took her time and made sure every detail was perfect. Highly recommend her!"
@@ -45,7 +47,7 @@ const AddReview = (props) => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Rating</Form.Label>
-        <Form.Select aria-label="Default select example">
+        <Form.Select aria-label="Default select example" >
           <option>Select a Rating</option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -62,7 +64,13 @@ const AddReview = (props) => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>destPort</Form.Label>
-        <Form.Control placeholder="Enter destPort" />
+        <Form.Control placeholder="Enter destPort" 
+          id="destPort"
+          name="destPort"
+          value={destPort}
+          onChange={(event) => {
+            setdestPort(event.target.value);
+          }}/>
         <Form.Text className="text-muted">
           This is the air port you are heading to
         </Form.Text>
@@ -70,7 +78,13 @@ const AddReview = (props) => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>sourcePort</Form.Label>
-        <Form.Control placeholder="Enter sourcePort" />
+        <Form.Control placeholder="Enter sourcePort" 
+        id="sourcePort"
+        name="sourcePort"
+        value={sourcePort}
+        onChange={(event) => {
+          setsourcePort(event.target.value);
+        }}/>
         <Form.Text className="text-muted">
           This is the air port you are leaving from
         </Form.Text>

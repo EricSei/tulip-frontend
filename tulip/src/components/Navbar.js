@@ -52,7 +52,7 @@ function MainNav() {
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/" className="nav-link">
+                <Link to="/MyReviews" className="nav-link">
                   My Reviews
                 </Link>
               </Nav.Link>
@@ -67,7 +67,7 @@ function MainNav() {
                 </Link>
               </Nav.Link>
 
-              <Nav.Link>
+              {/* <Nav.Link>
                 <NavDropdown title="noadmin" id="navbarScrollingDropdown">
                   <NavDropdown.Item>
                     <Link to="/AddAirline" className="nav-link">
@@ -82,7 +82,7 @@ function MainNav() {
                     Something else here
                   </NavDropdown.Item>
                 </NavDropdown>
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
             {/* <Form className="d-flex">
         <FormControl
